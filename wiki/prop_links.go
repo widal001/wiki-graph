@@ -3,19 +3,7 @@ package wiki
 import (
 	"net/url"
 	"strconv"
-	"strings"
-	"unicode"
 )
-
-const baseURL = "https://en.wikipedia.org/w/api.php"
-
-type WikiArticle struct {
-	title string
-}
-
-type PropQuery interface {
-	FormatURL(article WikiArticle) *url.URL
-}
 
 type PropLinks struct {
 	plnamespace []int
@@ -45,7 +33,7 @@ func (p PropLinks) FormatURL(article WikiArticle) *url.URL {
 	// Optionally add namespace filter
 	namespaces := p.plnamespace
 	if len(namespaces) > 0 {
-		namespaceString := formatNamespaces(namespaces)
+		namespaceString := p.formatNamespaces(namespaces)
 		params.Add("plnamespace", namespaceString)
 	}
 
@@ -59,15 +47,10 @@ func (p PropLinks) FormatURL(article WikiArticle) *url.URL {
 	return base
 }
 
-func (article WikiArticle) FormatTitle() string {
-	r := []rune(strings.ToLower(article.title))
-	r[0] = unicode.ToUpper(r[0])
-	return string(r)
-}
-
-func formatNamespaces(namespaces []int) string {
+func (p PropLinks) formatNamespaces(namespaces []int) string {
 	namespaceString := ""
 	for i := 0; i < len(namespaces); i++ {
+
 		if i != 0 {
 			namespaceString += "|"
 		}
