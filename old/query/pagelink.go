@@ -2,7 +2,7 @@ package query
 
 import (
 	"fmt"
-	"wiki-graph/client"
+	"wiki-graph/old/client"
 )
 
 const (

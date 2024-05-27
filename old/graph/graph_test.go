@@ -3,8 +3,8 @@ package graph
 import (
 	"fmt"
 	"testing"
-	"wiki-graph/api"
-	"wiki-graph/query"
+	"wiki-graph/old/api"
+	"wiki-graph/old/query"
 )
 
 var MockLinks = map[string][]string{

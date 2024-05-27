@@ -1,8 +1,8 @@
 package api
 
 import (
-	"wiki-graph/client"
-	"wiki-graph/query"
+	"wiki-graph/old/client"
+	"wiki-graph/old/query"
 )
 
 const BASE_URL = "https://en.wikipedia.org/w/api.php"

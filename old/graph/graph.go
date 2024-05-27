@@ -2,7 +2,7 @@ package graph
 
 import (
 	"fmt"
-	"wiki-graph/api"
+	"wiki-graph/old/api"
 )
 
 type PageLinkGraph struct {
